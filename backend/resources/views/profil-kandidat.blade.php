@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Profil Kandidat Pemilihan Desa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1f2937;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: white;
+      max-width: 800px;
+      margin: 20px auto;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      padding: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .card img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #4f46e5;
+    }
+
+    .card-content {
+      flex: 1;
+    }
+
+    .card-content h2 {
+      margin: 0;
+      font-size: 22px;
+      color: #1f2937;
+    }
+
+    .card-content p {
+      margin: 10px 0;
+      color: #374151;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .btn-pdf,
+    .btn-vote {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 16px;
+      background-color: #4f46e5;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-pdf:hover,
+    .btn-vote:hover {
+      background-color: #3730a3;
+    }
+
+    @media (max-width: 700px) {
+      .card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .card img {
+        margin: auto;
+      }
+
+      .card-content {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Profil Calon Kepala Desa</h1>
+
+  <!-- Kandidat 1 -->
+  <div class="card">
+    <img src="foto1.jpg" alt="Foto Kandidat 1">
+    <div class="card-content">
+      <h2>Nama Kandidat 1</h2>
+      <p><strong>Pendidikan Terakhir:</strong> S1 Ilmu Pemerintahan</p>
+      <p><strong>Pekerjaan Terakhir:</strong> Sekretaris Desa</p>
+      <p><strong>Visi:</strong> Mewujudkan desa mandiri dan sejahtera</p>
+      <p><strong>Misi:</strong></p>
+      <ul>
+        <li>Memberdayakan UMKM desa</li>
+        <li>Perbaikan infrastruktur</li>
+        <li>Transparansi anggaran</li>
+      </ul>
+      <a href="#" class="btn-vote">Pilih</a>
+    </div>
+  </div>
+
+  <!-- Kandidat 2 -->
+  <div class="card">
+    <img src="foto2.jpg" alt="Foto Kandidat 2">
+    <div class="card-content">
+      <h2>Nama Kandidat 2</h2>
+      <p><strong>Pendidikan Terakhir:</strong> S2 Agribisnis</p>
+      <p><strong>Pekerjaan Terakhir:</strong> Dosen Pertanian</p>
+      <p><strong>Visi:</strong> Desa hijau berkelanjutan dan modern</p>
+      <p><strong>Misi:</strong></p>
+      <ul>
+        <li>Meningkatkan pertanian organik</li>
+        <li>Digitalisasi pelayanan desa</li>
+        <li>Pendidikan untuk anak desa</li>
+      </ul>
+      <a href="#" class="btn-vote">Pilih</a>
+    </div>
+  </div>
+
+  <!-- Kandidat 3 -->
+  <div class="card">
+    <img src="foto3.jpg" alt="Foto Kandidat 3">
+    <div class="card-content">
+      <h2>Nama Kandidat 3</h2>
+      <p><strong>Pendidikan Terakhir:</strong> S1 Pendidikan Agama</p>
+      <p><strong>Pekerjaan Terakhir:</strong> Pengajar di Pesantren</p>
+      <p><strong>Visi:</strong> Desa berdaya, adil, dan religius</p>
+      <p><strong>Misi:</strong></p>
+      <ul>
+        <li>Peningkatan fasilitas ibadah</li>
+        <li>Pelatihan kerja untuk pemuda</li>
+        <li>Bantuan langsung untuk warga kurang mampu</li>
+      </ul>
+      <a href="#" class="btn-vote">Pilih</a>
+    </div>
+  </div>
+</body>
+</html>
