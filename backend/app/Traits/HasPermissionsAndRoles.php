@@ -62,7 +62,7 @@ trait HasPermissionsAndRoles {
     public function assignRole(...$roles)
     {
         $roles = collect($roles)->flatten()->map(function ($role) {
-            return $role instanceof Role ? $role->id : Role::whereName($role)->firstOrFail()->id;
+            return $role instanceof Role ? $role->id : Role::where('nama', $role)->firstOrFail()->id;
         });
 
         $this->roles()->syncWithoutDetaching($roles);
@@ -74,7 +74,7 @@ trait HasPermissionsAndRoles {
     public function removeRole(...$roles)
     {
         $roles = collect($roles)->flatten()->map(function ($role) {
-            return $role instanceof Role ? $role->id : Role::whereName($role)->firstOrFail()->id;
+            return $role instanceof Role ? $role->id : Role::where('nama', $role)->firstOrFail()->id;
         });
 
         $this->roles()->detach($roles);
@@ -86,7 +86,7 @@ trait HasPermissionsAndRoles {
     public function givePermissionTo(...$permissions)
     {
         $permissions = collect($permissions)->flatten()->map(function ($permission) {
-            return $permission instanceof Permission ? $permission->id : Permission::whereName($permission)->firstOrFail()->id;
+            return $permission instanceof Permission ? $permission->id : Permission::where('nama',$permission)->firstOrFail()->id;
         });
 
         $this->permissions()->syncWithoutDetaching($permissions);
@@ -98,7 +98,7 @@ trait HasPermissionsAndRoles {
     public function revokePermissionTo(...$permissions)
     {
         $permissions = collect($permissions)->flatten()->map(function ($permission) {
-            return $permission instanceof Permission ? $permission->id : Permission::whereName($permission)->firstOrFail()->id;
+            return $permission instanceof Permission ? $permission->id : Permission::where('nama',$permission)->firstOrFail()->id;
         });
 
         $this->permissions()->detach($permissions);

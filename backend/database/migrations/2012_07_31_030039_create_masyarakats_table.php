@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string("nama_lengkap")->nullable(false);
             $table->string("alamat");
             $table->date("tanggal_lahir");
-            $table->date("tempat_lahir");
+            $table->string("tempat_lahir");
             $table->string("agama");
             $table->enum('status_kawin', ['lajang','menikah'])->default('menikah');
             $table->string("foto")->nullable(true);
