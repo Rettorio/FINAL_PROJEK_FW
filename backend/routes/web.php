@@ -46,5 +46,3 @@ Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin
 Route::get('/login-admin', function () {
     return view('login-admin');
 });
-
-require __DIR__.'/auth.php';
