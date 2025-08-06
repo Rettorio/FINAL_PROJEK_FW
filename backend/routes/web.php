@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,13 @@ Route::get('/profil-kandidat', function () {
     return view('profil-kandidat');
 });
 
+Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.post');
+Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
+
+Route::get('/login-admin', function () {
+    return view('login-admin');
+});
 
 require __DIR__.'/auth.php';
