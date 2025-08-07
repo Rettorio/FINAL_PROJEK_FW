@@ -6,6 +6,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\KandidatController;
+use App\Http\Controllers\MasyarakatController;
+use App\Http\Controllers\PemilihanController;
+use App\Http\Controllers\PeriodeController;
 
 /*
 |--------------------------------------------------------------------------- 
@@ -29,42 +33,29 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit'); // Edit Profil
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update'); // Update Profil
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy'); // Hapus Profil
-    
+
     // User Routes
-    Route::middleware('role:user')->group(function () {
-        Route::get('/user/pemilihan', [UserController::class, 'pemilihan'])->name('user.pemilihan'); // Halaman Pemilihan untuk User
-        Route::post('/user/pemilihan', [UserController::class, 'storePemilihan'])->name('user.storePemilihan'); // Menyimpan Pemilihan User
+    Route::middleware('role:voter')->group(function () {
+        Route::get('/pemilihan', [UserController::class, 'pemilihan'])->name('user.pemilihan'); // Halaman Pemilihan untuk User
+        Route::post('/pemilihan', [UserController::class, 'storePemilihan'])->name('user.storePemilihan'); // Menyimpan Pemilihan User
         Route::post('/user/logout', [UserController::class, 'logout'])->name('user.logout'); // Logout User
     });
 
     // Admin Routes
-    Route::middleware('role:admin')->group(function () {
-        // Route Resource untuk Kandidat
-        Route::resource('admin/kandidat', AdminController::class)
-            ->except(['create', 'store']); // Hanya membutuhkan GET, UPDATE, EDIT, DELETE
-        
-        // Route Resource untuk Masyarakat
-        Route::resource('admin/masyarakat', AdminController::class)
-            ->except(['create', 'store']); // Hanya membutuhkan GET, UPDATE, EDIT, DELETE
-        
-        // Route Resource untuk Pemilihan
-        Route::resource('user/pemilihan', UserController::class)
-            ->except(['create', 'store']); // Hanya membutuhkan GET, UPDATE, EDIT, DELETE
+    Route::middleware('role:Panitia')->prefix('admin')->group(function () {
 
-        // Admin - Kelola Data Kandidat
-        Route::get('/admin/kelola-data-kandidat', [AdminController::class, 'kelolaDataKandidat'])->name('admin.dataKandidat'); // Kelola Data Kandidat
-        Route::get('/admin/kelola-data-masyarakat', [AdminController::class, 'kelolaDataMasyarakat'])->name('admin.dataMasyarakat'); // Kelola Data Masyarakat
-        Route::get('/admin/generator-credential', [AdminController::class, 'credentialGenerator'])->name('admin.credentialGenerator'); // Generator Credential
-        Route::get('/admin/lihat-hasil', [AdminController::class, 'lihatHasil'])->name('admin.lihatHasil'); // Lihat Hasil
+        Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
+        // Route Resource for Kandidat (will be /admin/kandidat)
+        Route::resource('kandidat', KandidatController::class);
 
-        // Admin - Edit dan Hapus Data Kandidat dan Masyarakat
-        Route::get('/admin/edit-kandidat/{id}', [AdminController::class, 'editKandidat'])->name('admin.editKandidat'); // Edit Data Kandidat
-        Route::post('/admin/update-kandidat/{id}', [AdminController::class, 'updateKandidat'])->name('admin.updateKandidat'); // Update Data Kandidat
-        Route::delete('/admin/delete-kandidat/{id}', [AdminController::class, 'deleteKandidat'])->name('admin.deleteKandidat'); // Hapus Data Kandidat
-
-        Route::get('/admin/edit-masyarakat/{id}', [AdminController::class, 'editMasyarakat'])->name('admin.editMasyarakat'); // Edit Data Masyarakat
-        Route::post('/admin/update-masyarakat/{id}', [AdminController::class, 'updateMasyarakat'])->name('admin.updateMasyarakat'); // Update Data Masyarakat
-        Route::delete('/admin/delete-masyarakat/{id}', [AdminController::class, 'deleteMasyarakat'])->name('admin.deleteMasyarakat'); // Hapus Data Masyarakat
+        // Route Resource for Masyarakat (will be /admin/masyarakat)
+        Route::resource('masyarakat', MasyarakatController::class);
+        // Route hasil pemilihan disini  
+        Route::resource('pemilihan', PemilihanController::class);
+        // Route periode disini
+        Route::resource('periode', PeriodeController::class);
+        Route::get('generator-credential', [AdminController::class, 'credentialGenerator'])->name('credentialGenerator.index');
+        Route::post('generator-credential', [AdminController::class, 'credentialGeneratorStore'])->name('credentialGenerator.store');
     });
 });
 
@@ -80,11 +71,6 @@ Route::get('/profil-kandidat', function () {
 Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.post');
 Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
-Route::get('/test', function() {
-    return "Hello admin";
-})->name('admin.dashboard')->middleware('role:Panitia');
-
-
 Route::get('/login-admin', function () {
     return view('login-admin');
 });

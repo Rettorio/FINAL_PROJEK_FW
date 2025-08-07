@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    public function index()
+    {
+        $data['title'] = "Dashboard";
+        return view('admin.dashboard', $data);   
+    }
+
     public function datakandidat()
     {
         return view('kandidat');
@@ -20,6 +26,12 @@ class AdminController extends Controller
     {
         return view('kredensial');
     }   
+
+    public function credentialgeneratorStore()
+    {
+        // return view('kredensial');
+        return redirect()->back();
+    }
 
     public function lihathasil()
     {
