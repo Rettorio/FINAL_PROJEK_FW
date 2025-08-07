@@ -16,12 +16,36 @@ trait HasPermissionsAndRoles {
     }
 
     /**
+     * Get the name of the first assigned role as a dynamic attribute.
+     * E.g., auth()->user()->role_nama
+     *
+     * @return string|null
+     */
+    public function getRoleNamaAttribute(): ?string
+    {
+        return $this->roles->first()?->nama;
+    }
+
+    /**
+     * Get the full Role instance of the first assigned role as a dynamic attribute.
+     * E.g., auth()->user()->primary_role->nama
+     *
+     * @return \App\Models\Role|null
+     */
+    public function getPrimaryRoleAttribute(): ?Role
+    {
+        return $this->roles->first();
+    }
+
+    /**
      * The permissions that belong to the user directly.
      */
     public function permissions(): BelongsToMany
     {
         return $this->morphToMany(Permission::class, 'model', 'model_has_permissions');
     }
+
+    // ... (rest of your existing methods like hasRole, hasAnyRole, hasPermissionTo, assignRole, etc.)
 
     /**
      * Determine if the user has the given role.
