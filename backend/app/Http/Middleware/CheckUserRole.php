@@ -18,7 +18,7 @@ class CheckUserRole
         // Check if the user is authenticated
         if (!auth()->check()) {
             // Redirect to login or abort with unauthorized status
-            return redirect()->route('login'); // Or abort(401, 'Unauthorized.');
+            return redirect()->route('admin.login'); // Or abort(401, 'Unauthorized.');
         }
 
         $user = auth()->user();

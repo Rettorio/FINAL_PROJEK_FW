@@ -28,7 +28,7 @@ trait HasPermissionsAndRoles {
      */
     public function hasRole(string $roleName): bool
     {
-        return $this->roles->contains('name', $roleName);
+        return $this->roles->contains('nama', $roleName);
     }
 
     /**
@@ -36,7 +36,7 @@ trait HasPermissionsAndRoles {
      */
     public function hasAnyRole(array $roleNames): bool
     {
-        return $this->roles->pluck('name')->intersect($roleNames)->isNotEmpty();
+        return $this->roles->pluck('nama')->intersect($roleNames)->isNotEmpty();
     }
 
     /**
@@ -45,7 +45,7 @@ trait HasPermissionsAndRoles {
     public function hasPermissionTo(string $permissionName): bool
     {
         // Check direct permissions
-        if ($this->permissions->contains('name', $permissionName)) {
+        if ($this->permissions->contains('nama', $permissionName)) {
             return true;
         }
 
@@ -53,7 +53,7 @@ trait HasPermissionsAndRoles {
         return $this->roles->load('permissions')
                     ->pluck('permissions')
                     ->flatten()
-                    ->contains('name', $permissionName);
+                    ->contains('nama', $permissionName);
     }
 
     /**

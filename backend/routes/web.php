@@ -80,6 +80,9 @@ Route::get('/profil-kandidat', function () {
 Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.post');
 Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+Route::get('/test', function() {
+    return "Hello admin";
+})->name('admin.dashboard')->middleware('role:Panitia');
 
 
 Route::get('/login-admin', function () {

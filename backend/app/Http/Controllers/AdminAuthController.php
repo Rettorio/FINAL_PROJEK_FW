@@ -19,7 +19,7 @@ public function showLoginForm()
         $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {
-            if (Auth::user()->role === 'admin') {
+            if (Auth::user()->hasAnyRole(['Panitia'])) {
                 return redirect()->route('admin.dashboard');
             } else {
                 Auth::logout();
