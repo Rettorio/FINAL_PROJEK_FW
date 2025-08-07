@@ -14,6 +14,7 @@ class Masyarakat extends Model
         "nama_lengkap",
         "alamat",
         "tanggal_lahir",
+        "jenis_kelamin",
         "tempat_lahir",
         "agama",
         "status_kawin",
