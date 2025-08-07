@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a0732a7e774783e9b6b7456402763c08",
+    "content-hash": "afe9d5ca06feee7b39d7a84be623732f",
     "packages": [
         {
             "name": "brick/math",
@@ -8339,6 +8339,58 @@
                 }
             ],
             "time": "2024-03-03T12:36:25+00:00"
+        },
+        {
+            "name": "zmrq/ektp",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zaiimrq/ektp.git",
+                "reference": "755fca378fc61398a3f1a9379286d5eedc650a8f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zaiimrq/ektp/zipball/755fca378fc61398a3f1a9379286d5eedc650a8f",
+                "reference": "755fca378fc61398a3f1a9379286d5eedc650a8f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^12.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Zmrq\\Ektp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "zaiimrq",
+                    "email": "zaiimrq@gmail.com"
+                }
+            ],
+            "description": "PHP library to generate fake Indonesian eKTP/NIK numbers with valid format for testing and development purposes.",
+            "keywords": [
+                "data",
+                "ektp",
+                "generator",
+                "identity",
+                "indonesia",
+                "ktp",
+                "nik"
+            ],
+            "support": {
+                "issues": "https://github.com/zaiimrq/ektp/issues",
+                "source": "https://github.com/zaiimrq/ektp/tree/v1.1.1"
+            },
+            "time": "2025-05-08T11:45:34+00:00"
         }
     ],
     "aliases": [],

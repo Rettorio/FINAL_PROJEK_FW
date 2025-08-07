@@ -86,8 +86,8 @@
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text" data-i18n="Home">Home</span>
                     </li>
-                    <li class="menu-item {{ request()->is('dashboard') || request()->is('/') ? 'active' : '' }}">
-                        <a href="/dashboard" class="menu-link">
+                    <li class="menu-item {{ request()->is('admin') || request()->is('/') ? 'active' : '' }}">
+                        <a href="{{ route('admin.dashboard') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-smart-home"></i>
                             <div data-i18n="Dashboard">Dashboard</div>
                         </a>
