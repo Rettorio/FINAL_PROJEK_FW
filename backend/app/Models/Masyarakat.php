@@ -18,6 +18,11 @@ class Masyarakat extends Model
         "tempat_lahir",
         "agama",
         "status_kawin",
+        'foto'
+    ];
+
+    protected $casts = [
+        "tanggal_lahir" => "date"
     ];
 
     public static $STATUS_KAWIN_MENIKAH = "menikah";

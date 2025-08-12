@@ -69,8 +69,7 @@
                 <div class="app-brand demo">
                     <a href="{{ route('admin.dashboard') }}" class="app-brand-link">
                         <img src="/panitia/assets/img/logo/logo.png" alt="logo" width="50px" height="50px">
-                        <span class="app-brand-text demo menu-text fw-bold" style="font-size: 16px;">Logistik &
-                            Asset</span>
+                        <span class="app-brand-text demo menu-text fw-bold" style="font-size: 16px;">SIPADES</span>
                     </a>
 
                     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
@@ -96,13 +95,13 @@
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text" data-i18n="Data Masyarakat">Data Masyarakat</span>
                     </li>
-                    <li class="menu-item {{ request()->is('masyarakat*') ? 'active' : '' }}">
+                    <li class="menu-item {{ request()->is('admin/masyarakat*') ? 'active' : '' }}">
                         <a href="{{ route('masyarakat.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-users-group"></i>
                             <div data-i18n="Masyarakat">Masyarakat</div>
                         </a>
                     </li>
-                    <li class="menu-item {{ request()->is('kandidat*') ? 'active' : '' }}">
+                    <li class="menu-item {{ request()->is('admin/kandidat*') ? 'active' : '' }}">
                         <a href="{{ route('kandidat.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-user-heart"></i>
                             <div data-i18n="Kandidat">Kandidat</div>
@@ -113,19 +112,19 @@
                         <span class="menu-header-text" data-i18n="Data Pemilihan">Data Pemilihan</span>
                     </li>
 
-                    <li class="menu-item {{ request()->is('pemilihan*') ? 'active' : '' }}">
+                    <li class="menu-item {{ request()->is('admin/pemilihan*') ? 'active' : '' }}">
                         <a href="{{ route('pemilihan.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-mail-check"></i>
                             <div data-i18n="Gudang">Hasil Pemilihan</div>
                         </a>
                     </li>
-                    <li class="menu-item {{ request()->is('periode*') ? 'active' : '' }}">
+                    <li class="menu-item {{ request()->is('admin/periode*') ? 'active' : '' }}">
                         <a href="{{ route('periode.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-calendar-stats"></i>
                             <div data-i18n="Periode">Periode</div>
                         </a>
                     </li>
-                    <li class="menu-item {{ request()->is('credentialGenerator*') ? 'active' : '' }}">
+                    <li class="menu-item {{ request()->is('admin/credentialGenerator*') ? 'active' : '' }}">
                         <a href="{{ route('credentialGenerator.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-lock-star"></i>
                             <div data-i18n="Gudang">Autentikasi Pemilih</div>
@@ -335,55 +334,6 @@
             })
         });
     </script>
-
-    <script>
-        $(document).on('click', '#btn-reject', function(e) {
-            e.preventDefault();
-            var form = $(this).closest("form");
-            Swal.fire({
-                title: "Apa kamu yakin ?",
-                text: "Anda tidak akan dapat mengembalikannya !",
-                icon: "warning",
-                showCancelButton: !0,
-                confirmButtonText: "Ya, Reject !",
-                cancelButtonText: 'Batal',
-                customClass: {
-                    confirmButton: "btn btn-danger me-3 waves-effect waves-light",
-                    cancelButton: "btn btn-label-success waves-effect waves-light"
-                },
-                buttonsStyling: !1,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    form.submit();
-                }
-            })
-        });
-    </script>
-
-    <script>
-        $(document).on('click', '#btn-approve', function(e) {
-            e.preventDefault();
-            var form = $(this).closest("form");
-            Swal.fire({
-                title: "Apa kamu yakin ?",
-                text: "Anda tidak akan dapat mengembalikannya !",
-                icon: "warning",
-                showCancelButton: !0,
-                confirmButtonText: "Ya, Approve !",
-                cancelButtonText: 'Batal',
-                customClass: {
-                    confirmButton: "btn btn-danger me-3 waves-effect waves-light",
-                    cancelButton: "btn btn-label-success waves-effect waves-light"
-                },
-                buttonsStyling: !1,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    form.submit();
-                }
-            })
-        });
-    </script>
-
     <script>
         (function() {
             'use strict'
